@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 
 import CheckBox from '@react-native-community/checkbox';
+import {Colors} from '../../../../Utils/Contansts';
 
 export interface Node {
   id: number;
@@ -54,6 +55,17 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           testID={node.id.toString() + 'checkBox'}
           disabled={isSelectable}
           onChange={handleSelect}
+          onCheckColor={Colors.white}
+          onFillColor={Colors.mediumBlue}
+          onTintColor={Colors.mediumBlue}
+          tintColors={{
+            true: Colors.mediumBlue,
+            false: Colors.customGray,
+          }}
+          value={isSelected}
+          boxType="square"
+          style={styles.checkBox}
+          animationDuration={0.4}
         />
         <Text
           testID={node.id.toString() + 'text'}
@@ -101,6 +113,10 @@ const styles = StyleSheet.create({
   },
   childNodeContainer: {
     marginLeft: 20,
+  },
+  checkBox: {
+    height: 20,
+    width: 20,
   },
 });
 
